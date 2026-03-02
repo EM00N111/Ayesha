@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ayesha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff477e;
+            --accent: #ff85a1;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body, html {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Animated Gradient Background */
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #a1887f);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 50px 30px;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: cardAppear 1s ease-out;
+        }
+
+        /* Pages */
+        .page { display: none; opacity: 0; transition: opacity 0.8s ease; }
+        .active { display: block; opacity: 1; }
+
+        /* Page 1: Mystery Button */
+        .gift-btn {
+            width: 100px; height: 100px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 40px;
+            margin: 0 auto;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 71, 126, 0.3);
+            transition: 0.4s;
+            animation: pulse 2s infinite;
+        }
+        .gift-btn:hover { transform: scale(1.1); }
+
+        /* Text Styling */
+        .main-text {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #444;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .name-highlight {
+            color: var(--primary);
+            display: block;
+            font-size: 4rem;
+            margin-top: 10px;
+        }
+
+        /* Button Styling */
+        .btn-action {
+            margin-top: 30px;
+            padding: 15px 35px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(255, 71, 126, 0.3);
+            display: none; /* JS will show */
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Final Page Flowers */
+        .flower-cluster {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        /* Particles */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp 6s linear infinite;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 71, 126, 0.4); }
+            70% { box-shadow: 0 0 0 30px rgba(255, 71, 126, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 71, 126, 0); }
+        }
+        @keyframes cardAppear { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes fadeInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="glass-card">
+            <div id="page1" class="page active">
+                <div class="gift-btn" onclick="showPage2()">🎁</div>
+                <p style="margin-top: 25px; color: #666; font-weight: 600; letter-spacing: 2px;">CLICK TO OPEN</p>
+            </div>
+
+            <div id="page2" class="page">
+                <h1 class="main-text">I LOVE YOU <br> <span class="name-highlight">AYESHA</span></h1>
+                <button id="nextBtn" class="btn-action" onclick="showPage3()">Click for Surprise ✨</button>
+            </div>
+
+            <div id="page3" class="page">
+                <div class="flower-cluster">🌸🌷🌹🌻🌺</div>
+                <h1 class="main-text" style="font-size: 3.5rem;">FOR YOUU</h1>
+                <p style="margin-top: 15px; color: #444; font-weight: 500;">Every flower reminds me of you. ❤️</p>
+                <div class="flower-cluster" style="margin-top: 20px;">💐🌼🏵️🌹🌷</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage2() {
+            transition('page1', 'page2');
+            createParticles(['❤️', '💖', '✨'], 15);
+            
+            // Show button after 3 seconds
+            setTimeout(() => {
+                const btn = document.getElementById('nextBtn');
+                btn.style.display = 'inline-block';
+            }, 3000);
+        }
+
+        function showPage3() {
+            transition('page2', 'page3');
+            // Heavy flower rain
+            setInterval(() => {
+                createParticles(['🌸', '🌹', '🌷', '🌺', '🌼'], 1);
+            }, 300);
+        }
+
+        function transition(fromId, toId) {
+            const from = document.getElementById(fromId);
+            const to = document.getElementById(toId);
+            from.style.opacity = '0';
+            setTimeout(() => {
+                from.classList.remove('active');
+                to.classList.add('active');
+                setTimeout(() => to.style.opacity = '1', 50);
+            }, 800);
+        }
+
+        function createParticles(types, count) {
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.innerHTML = types[Math.floor(Math.random() * types.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                p.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                p.style.top = '100vh';
+                document.body.appendChild(p);
+                
+                setTimeout(() => p.remove(), 6000);
+            }
+        }
+    </script>
+</body>
+</html>
