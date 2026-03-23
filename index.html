@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Pakhii ❤️</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff4e8a, #6a00ff);
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        position: relative;
+        width: 320px;
+        height: 420px;
+        transform-style: preserve-3d;
+        transform: rotateY(0deg);
+        transition: transform 1s;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: rotateY(180deg);
+    }
+
+    .side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .front {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .back {
+        background: rgba(0,0,0,0.4);
+        transform: rotateY(180deg);
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin: 0;
+        text-shadow: 0 0 10px rgba(255,255,255,0.7);
+    }
+
+    .heart {
+        width: 80px;
+        height: 80px;
+        background: red;
+        position: relative;
+        transform: rotate(-45deg);
+        animation: beat 1s infinite;
+        margin-top: 20px;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: '';
+        width: 80px;
+        height: 80px;
+        background: red;
+        border-radius: 50%;
+        position: absolute;
+    }
+
+    .heart::before {
+        top: -40px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: 40px;
+        top: 0;
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1) rotate(-45deg); }
+        50% { transform: scale(1.2) rotate(-45deg); }
+    }
+
+    .floating {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: rgba(255,255,255,0.7);
+        border-radius: 50%;
+        animation: float 6s infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) translateX(0); opacity: 1; }
+        100% { transform: translateY(-600px) translateX(200px); opacity: 0; }
+    }
+
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="side front">
+        <h1>Click Me 💌</h1>
+        <div class="heart"></div>
+    </div>
+
+    <div class="side back">
+        <h1>I Love You Pakhii ❤️</h1>
+        <p>You are my happiness, my love, my everything 💖</p>
+    </div>
+</div>
+
+<script>
+    // Floating particles
+    for(let i = 0; i < 25; i++){
+        let bubble = document.createElement('div');
+        bubble.className = 'floating';
+        bubble.style.left = Math.random() * 100 + 'vw';
+        bubble.style.animationDuration = (Math.random() * 5 + 3) + 's';
+        document.body.appendChild(bubble);
+    }
+</script>
+
+</body>
+</html>
